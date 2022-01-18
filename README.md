@@ -1,4 +1,4 @@
-# [Név]
+# Szalai Szabolcs
 
 ## Hogyan kezdj neki?
 
