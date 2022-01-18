@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Statues</h1>
-        <table>
+        <table class="table table-striped table-dark">
             <thead>
                 <tr>
                 <th>Azonsító</th>
@@ -18,8 +18,8 @@
                 <td>{{ statue.height }}</td>
                 <td>{{ statue.price }}</td>
                 <td>
-                    <button @click="deleteStatue(statue.id)">Törlés</button>
-                    <button @click="editStatue(statue.id)">Szerkesztés</button>
+                    <button @click="deleteStatue(statue.id)" type="button" class="btn btn-danger">Törlés</button>
+                    <button @click="editStatue(statue.id)" type="button" class="btn btn-info">Szerkesztés</button>
                 </td>
                 </tr>
                 <tr>
@@ -27,18 +27,33 @@
                     <input type="hidden" v-model="statue.id">
                 </td>
                 <td>
-                    <input type="text" v-model="statue.person">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Személy</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="statue.person">
+                    </div>
                 </td>
                 <td>
-                    <input type="number" v-model="statue.height">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Magasság</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="statue.height">
+                    </div>
                 </td>
                 <td>
-                    <input type="number" v-model="statue.price">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ár</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="statue.price">
+                    </div>
                 </td>
                 <td>
-                    <button v-if="mod_new" @click="newStatue" :disabled="saving">Létrehoz</button>
-                    <button v-if="!mod_new" @click="saveStatue" :disabled="saving">Mentés</button>
-                    <button v-if="!mod_new" @click="cancelEdit" :disabled="saving">Mégse</button>
+                    <button v-if="mod_new" @click="newStatue" :disabled="saving" type="button" class="btn btn-success">Létrehoz</button>
+                    <button v-if="!mod_new" @click="saveStatue" :disabled="saving" type="button" class="btn btn-success">Mentés</button>
+                    <button v-if="!mod_new" @click="cancelEdit" :disabled="saving" type="button" class="btn btn-danger">Mégse</button>
                 </td>
                 </tr>
             </tbody>

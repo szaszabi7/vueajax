@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Paintings</h1>
-        <table>
+        <table class="table table-striped table-dark">
             <thead>
                 <tr>
                 <th>Azonsító</th>
@@ -18,8 +18,8 @@
                 <td>{{ painting.year }}</td>
                 <td>{{ painting.on_display }}</td>
                 <td>
-                    <button @click="deletePainting(painting.id)">Törlés</button>
-                    <button @click="editPainting(painting.id)">Szerkesztés</button>
+                    <button @click="deletePainting(painting.id)" type="button" class="btn btn-danger">Törlés</button>
+                    <button @click="editPainting(painting.id)" type="button" class="btn btn-info">Szerkesztés</button>
                 </td>
                 </tr>
                 <tr>
@@ -27,18 +27,31 @@
                     <input type="hidden" v-model="painting.id">
                 </td>
                 <td>
-                    <input type="text" v-model="painting.title">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Cím</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="painting.title">
+                    </div>
                 </td>
                 <td>
-                    <input type="number" v-model="painting.year">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Év</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" v-model="painting.year">
+                    </div>
                 </td>
                 <td>
-                    <input type="checkbox" v-model="painting.on_display">
+                    <input type="checkbox" class="form-check-input" v-model="painting.on_display">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Kiállítva
+                    </label>
                 </td>
                 <td>
-                    <button v-if="mod_new" @click="newPainting" :disabled="saving">Létrehoz</button>
-                    <button v-if="!mod_new" @click="savePainting" :disabled="saving">Mentés</button>
-                    <button v-if="!mod_new" @click="cancelEdit" :disabled="saving">Mégse</button>
+                    <button v-if="mod_new" @click="newPainting" :disabled="saving" type="button" class="btn btn-success">Létrehoz</button>
+                    <button v-if="!mod_new" @click="savePainting" :disabled="saving" type="button" class="btn btn-success">Mentés</button>
+                    <button v-if="!mod_new" @click="cancelEdit" :disabled="saving" type="button" class="btn btn-danger">Mégse</button>
                 </td>
                 </tr>
             </tbody>
