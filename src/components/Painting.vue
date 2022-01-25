@@ -18,7 +18,7 @@
                 <td>{{ painting.year }}</td>
                 <td>{{ painting.on_display }}</td>
                 <td>
-                    <button @click="deletePainting(painting.id)" type="button" class="btn btn-danger">Törlés</button>
+                    <button @click="deletePainting(painting.id)" type="button" class="btn btn-danger m-1">Törlés</button>
                     <button @click="editPainting(painting.id)" type="button" class="btn btn-info">Szerkesztés</button>
                 </td>
                 </tr>
@@ -50,7 +50,7 @@
                 </td>
                 <td>
                     <button v-if="mod_new" @click="newPainting" :disabled="saving" type="button" class="btn btn-success">Létrehoz</button>
-                    <button v-if="!mod_new" @click="savePainting" :disabled="saving" type="button" class="btn btn-success">Mentés</button>
+                    <button v-if="!mod_new" @click="savePainting" :disabled="saving" type="button" class="btn btn-success m-1">Mentés</button>
                     <button v-if="!mod_new" @click="cancelEdit" :disabled="saving" type="button" class="btn btn-danger">Mégse</button>
                 </td>
                 </tr>
@@ -158,6 +158,11 @@ export default {
 }
 
 table {
-    margin-left: auto; margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+  color: white;
 }
 </style>
